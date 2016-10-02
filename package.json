@@ -1,0 +1,41 @@
+{
+  "name": "artshow",
+  "version": "0.0.1",
+  "description": "Simple static website generator for artists",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "lint": "eslint .",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ktonon/artshow.git"
+  },
+  "author": "Kevin Tonon <kevin@betweenconcepts.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ktonon/artshow/issues"
+  },
+  "homepage": "https://github.com/ktonon/artshow#readme",
+  "dependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "elm-webpack-loader": "^3.0.6",
+    "eslint": "^3.7.0",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^2.0.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
+    "file-loader": "^0.9.0",
+    "font-awesome": "^4.6.3",
+    "koa": "^1.2.4",
+    "koa-static": "^2.0.0",
+    "skeleton-css": "^2.0.4",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2"
+  }
+}
