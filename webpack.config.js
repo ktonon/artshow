@@ -35,6 +35,10 @@ module.exports = {
         loader: 'file?name=[name].[ext]',
       },
       {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'url?limit=10000!img?progressive=true',
+      },
+      {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
         loader: 'elm-webpack',

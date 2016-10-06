@@ -1,8 +1,12 @@
-module Main exposing (..)
+port module Main exposing (..)
 
-import Html exposing (Html, div, button, text)
+import Html exposing (..)
+import Html.App
+import Html.Attributes exposing (class)
+import Json.Encode
 import Navigation
 import Routing exposing (Route(..))
+import Site
 
 
 main : Program Never
@@ -21,12 +25,13 @@ main =
 
 
 type alias Model =
-    {}
+    { site : Site.Model
+    }
 
 
 empty : Model
 empty =
-    Model
+    Model Site.empty
 
 
 init : Result String Route -> ( Model, Cmd Msg )
@@ -53,23 +58,30 @@ urlUpdate result model =
 
 
 type Msg
-    = NoOp
+    = LoadData Json.Encode.Value
+    | SiteMessage Site.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        NoOp ->
-            ( model, Cmd.none )
+        LoadData data ->
+            ( { model | site = (Site.decode data) }, Cmd.none )
+
+        SiteMessage cMsg ->
+            Site.updateOne SiteMessage cMsg model
 
 
 
 -- SUBSCRIPTIONS
 
 
+port data : (Json.Encode.Value -> msg) -> Sub msg
+
+
 subscriptions : Model -> Sub Msg
 subscriptions _ =
-    Sub.none
+    data LoadData
 
 
 
@@ -78,4 +90,8 @@ subscriptions _ =
 
 view : Model -> Html Msg
 view model =
-    div [] [ text "It works" ]
+    div [ class "row" ]
+        [ div [ class "one-half column" ]
+            [ Html.App.map SiteMessage (Site.view model.site) ]
+        , div [ class "one-half column" ] [ div [ class "fa fa-car fa-5x" ] [] ]
+        ]
