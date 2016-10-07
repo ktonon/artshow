@@ -2,7 +2,7 @@ module Site exposing (..)
 
 import ChildUpdate
 import Html exposing (..)
-import Html.Attributes exposing (src)
+import Html.Attributes exposing (class, src, style)
 import Json.Decode exposing ((:=))
 import Json.Encode
 
@@ -11,9 +11,16 @@ import Json.Encode
 
 
 type alias Model =
-    { welcome : String
-    , logo : String
+    { pageTitle : String
+    , banner : String
     }
+
+
+decoder : Json.Decode.Decoder Model
+decoder =
+    Json.Decode.object2 Model
+        ("pageTitle" := Json.Decode.string)
+        ("banner" := Json.Decode.string)
 
 
 empty : Model
@@ -33,13 +40,6 @@ decode data =
 
             Err err ->
                 Model err ""
-
-
-decoder : Json.Decode.Decoder Model
-decoder =
-    Json.Decode.object2 Model
-        ("welcome" := Json.Decode.string)
-        ("logo" := Json.Decode.string)
 
 
 
@@ -76,7 +76,17 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ text model.welcome
-        , img [ src model.logo ] []
+    div [ class "container" ]
+        [ img
+            [ src model.banner
+            , class "u-full-width"
+            ]
+            []
+        , h1
+            [ style
+                [ ( "text-align", "center" )
+                , ( "margin-top", "30px" )
+                ]
+            ]
+            [ text model.pageTitle ]
         ]

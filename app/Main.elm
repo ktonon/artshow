@@ -90,8 +90,5 @@ subscriptions _ =
 
 view : Model -> Html Msg
 view model =
-    div [ class "row" ]
-        [ div [ class "one-half column" ]
-            [ Html.App.map SiteMessage (Site.view model.site) ]
-        , div [ class "one-half column" ] [ div [ class "fa fa-car fa-5x" ] [] ]
-        ]
+    div []
+        [ Html.App.map SiteMessage (Site.view model.site) ]
