@@ -1,0 +1,31 @@
+body {
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-stretch: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-weight: 100;
+}
+
+header {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 55vh;
+  position: relative;
+  width: 100vw;
+}
+
+header h1 {
+  font-size: 60pt;
+  font-weight: 800;
+  margin-top: 0;
+}
+header .title {
+  position: absolute;
+  top: 15vh;
+  width: 100vw;
+}

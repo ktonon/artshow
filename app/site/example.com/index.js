@@ -1,4 +1,7 @@
+require('./style.scss');
+
 module.exports = {
-  pageTitle: 'example art',
+  font: 'Roboto:100',
+  pageTitle: 'Example Art',
   banner: require('./banner.png'),
 };

@@ -76,17 +76,8 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div [ class "container" ]
-        [ img
-            [ src model.banner
-            , class "u-full-width"
+    header [ style [ ( "background-image", "url(" ++ model.banner ++ ")" ) ] ]
+        [ div [ class "title" ]
+            [ h1 [ class "center white" ] [ text model.pageTitle ]
             ]
-            []
-        , h1
-            [ style
-                [ ( "text-align", "center" )
-                , ( "margin-top", "30px" )
-                ]
-            ]
-            [ text model.pageTitle ]
         ]
